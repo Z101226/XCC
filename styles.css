@@ -255,7 +255,7 @@ main {
     margin-bottom: 20px;
     overflow: hidden;
     border-radius: 5px;
-    height: 250px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1228,7 +1228,7 @@ footer {
 /* 响应式设计 */
 @media (max-width: 768px) {
     .menu-toggle {
-        display: none;
+        display: block;
     }
 
     .navbar {
@@ -1238,11 +1238,14 @@ footer {
 
     .navbar .container {
         padding: 10px 15px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
     }
 
     .logo {
-        margin-bottom: 5px;
+        margin-bottom: 0;
         justify-content: flex-start;
+        flex: 0 0 auto;
     }
 
     .logo-img {
@@ -1252,28 +1255,37 @@ footer {
     }
 
     .logo h1 {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .nav-links {
-        position: static;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: flex-end;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
         width: 100%;
-        background-color: transparent;
-        padding: 0;
-        box-shadow: none;
+        background-color: #fff;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
     }
 
     .nav-links li {
-        margin: 2px 5px;
+        margin: 5px 0;
+        text-align: center;
     }
 
     .nav-link {
-        padding: 5px 10px;
-        font-size: 0.8rem;
+        padding: 8px 15px;
+        font-size: 1rem;
+        display: block;
     }
 
     .hero h2 {
@@ -1311,7 +1323,7 @@ footer {
     }
     
     .logo {
-        margin-bottom: 3px;
+        margin-bottom: 0;
         justify-content: flex-start;
     }
     
@@ -1322,21 +1334,37 @@ footer {
     }
     
     .logo h1 {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .nav-links {
-        flex-wrap: wrap;
-        justify-content: flex-end;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
     }
 
     .nav-links li {
-        margin: 1px 3px;
+        margin: 5px 0;
+        text-align: center;
     }
 
     .nav-link {
-        padding: 3px 6px;
-        font-size: 0.7rem;
+        padding: 8px 15px;
+        font-size: 0.95rem;
+        display: block;
     }
 
     .hero h2 {
@@ -1539,6 +1567,84 @@ footer {
 
 .certification-item:hover img {
     transform: scale(1.05);
+}
+
+/* ========================================
+   首页产品滑动展示样式
+   ======================================= */
+.products-slider-section {
+    background-color: #1e88e5;
+    padding: 60px 20px;
+    margin-top: 0;
+}
+
+.products-slider-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.products-slider-header h3 {
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.products-slider-description {
+    font-size: 1.1rem;
+    color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.products-slider-scroll {
+    overflow: hidden;
+    padding-bottom: 20px;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.products-slider-container {
+    display: flex;
+    animation: scroll 20s linear infinite;
+    justify-content: flex-start;
+}
+
+.products-slider-container:hover {
+    animation-play-state: paused;
+}
+
+.products-slider-grid {
+    display: flex;
+    gap: 20px;
+    min-width: max-content;
+    padding: 0 10px;
+}
+
+.products-slider-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    min-width: 200px;
+    max-width: 240px;
+    flex: 1;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.products-slider-item img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.products-slider-item h4 {
+    font-size: 1.1rem;
+    color: #1e88e5;
+    font-weight: bold;
 }
 
 /* ========================================

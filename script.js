@@ -99,26 +99,47 @@ window.onload = function() {
     // 渲染新闻列表
     renderNews();
     
-    // 绑定上一页按钮点击事件
-    document.getElementById('prev-btn').onclick = function() {
-        // 检查是否可以翻到上一页
-        if (currentPage > 1) {
-            currentPage--; // 页码减1
-            renderNews(); // 重新渲染新闻列表
-        }
-    };
+    // 绑定上一页按钮点击事件（仅在新闻页面存在）
+    const prevBtn = document.getElementById('prev-btn');
+    if (prevBtn) {
+        prevBtn.onclick = function() {
+            // 检查是否可以翻到上一页
+            if (currentPage > 1) {
+                currentPage--; // 页码减1
+                renderNews(); // 重新渲染新闻列表
+            }
+        };
+    }
     
-    // 绑定下一页按钮点击事件
-    document.getElementById('next-btn').onclick = function() {
-        // 检查是否可以翻到下一页
-        if (currentPage < Math.ceil(newsData.length / pageSize)) {
-            currentPage++; // 页码加1
-            renderNews(); // 重新渲染新闻列表
-        }
-    };
+    // 绑定下一页按钮点击事件（仅在新闻页面存在）
+    const nextBtn = document.getElementById('next-btn');
+    if (nextBtn) {
+        nextBtn.onclick = function() {
+            // 检查是否可以翻到下一页
+            if (currentPage < Math.ceil(newsData.length / pageSize)) {
+                currentPage++; // 页码加1
+                renderNews(); // 重新渲染新闻列表
+            }
+        };
+    }
     
-    // 导航栏在移动设备上始终显示，无需菜单切换功能
-    // 已通过CSS媒体查询实现响应式布局
+    // 移动端菜单切换功能
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        
+        // 点击导航链接后关闭菜单
+        const navLinkItems = navLinks.querySelectorAll('.nav-link');
+        navLinkItems.forEach(function(link) {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
 };
 
 /**
